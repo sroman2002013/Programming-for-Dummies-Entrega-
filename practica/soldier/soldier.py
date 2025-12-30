@@ -1,8 +1,12 @@
 class Soldier:
-    def __init__(self, hp, weapon, state):
+    def __init__(self, name, hp, weapon, state):
+        self.name = name
         self.hp = hp
         self.weapon = weapon
         self.state = state
+
+    def is_alive(self) -> bool:
+        return self.hp > 0
 
     def take_damage(self, damage: int):
         self.hp -= damage

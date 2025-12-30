@@ -17,9 +17,6 @@ class Weapon(ABC):
     def shoot(self, target, damage_multiplier = 1):
         pass
 
-    def critical_shoot(self, target):
-        self.shoot(target, random.choice([0, 2]))
-
     @abstractmethod
     def reload(self):
         pass
