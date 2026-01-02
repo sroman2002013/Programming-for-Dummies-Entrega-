@@ -1,10 +1,7 @@
-
-
 WEAPONS = {
     "1": "Gun",
     "2": "Shot Gun",
     "3": "Machine Gun"
-
 }
 
 MONSTERS = {
@@ -22,5 +19,10 @@ SOLDIER_ACTIONS = {
 MONSTER_ACTIONS = {
     "1": "All Team Attack",
     "2": "Special Attack"
+}
 
+WEAPONS_MAX_AMMUNITION = {
+        "Gun": 10,
+        "Shot Gun": 3,
+        "Machine Gun": 15
 }

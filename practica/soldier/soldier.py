@@ -1,5 +1,7 @@
+from soldier_states.normal_state import NormalState 
+
 class Soldier:
-    def __init__(self, name, hp, weapon, state):
+    def __init__(self, name, weapon, hp=1000, state=NormalState()):
         self.name = name
         self.hp = hp
         self.weapon = weapon

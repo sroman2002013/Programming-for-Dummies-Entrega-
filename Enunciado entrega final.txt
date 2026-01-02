@@ -1,0 +1,39 @@
+Unos desarrolladores están realizando un videojuego, pero se han dado cuenta de que llegados a este punto de que su código no está bien hecho y va a ser imposible de mantener y ampliar si siguen así. Tu objetivo es ayudarles a mejorarlo todo lo que puedas.
+Para ayudarte te han descrito como es su videojuego actualmente:
+Tenemos un simulador de combates entre un soldado y un equipo de monstruos con los siguientes:
+- Primero se configura a nuestro soldado, eligiendo su nombre y su arma.
+- Segundo se configura el equipo de monstruos, eligiendo uno por uno que monstruos queremos añadir
+	* Actualmente el equipo de monstruos es de 3, pero quizá en el futuro se quiera cambiar
+- Tercero se simula un combate entre el soldado y los monstruos.
+	* El soldado y los monstruos irán realizando acciones por turnos y quitándose HP(puntos de vida)
+	* En el momento que el soldado o todos los monstruos mueren se acaba la pelea
+
+El soldado puede realizar tres acciones (por ahora):
+- Disparar a un monstruo
+- Recargar
+- Intentar un disparo crítico, el cual hace el doble de daño, pero tiene un 50% de fallar
+Los monstruos pueden realizar dos acciones:
+- Atacar
+- Ataque Especial
+Existen tres tipos de monstruos, aunque obviamente se añadiran mas:
+- Fantasma: 120 de vida y hace 30 de daño por golpe. Su ataque especial es poner al soldado en el estado asustado, el cual provoca que tenga 50% de posibilidades de no realizar la siguiente acción
+- Demonio: 70 de vida y hace 40 de daño por golpe. Su ataque especial es poner al soldado en el estado maldecido, el cual le restará 50 HP todos los turnos
+- Troll: 90 de vida y hace 30 de daño por golpe, al atacar gruñe. Su ataque especial es poner al soldado en el estado troll, el cual le impedirá hablar correctamente
+ 
+
+El soldado podrá contar con una de las siguientes tres armas, aunque los desarrolladores quieren añadir mas:
+- Pistola: cuenta con 10 de munción y su disparo hace 30 de daño, cuando se recarga recupera toda la munición
+- Escopeta: cuenta con 3 de munición  y su disparo hace 60 de daño, cuando se recarga solo recupera uno de munición
+- Ametrelladora: cuenta con 15 de munición y realiza 3 disparos de 30 de daño, pero cada uno tiene una probabilidad de fallar, cuando se recarga recupera toda la munición
+ 
+TODO nivel 3+: A partir de ahora no se hará un solo combate, sino que tendremos una partida en la que se iran sucediendo diferentes combates, por cada victoria, la dificultad aumenta:
+-A partir de la tercera victoria la vida del soldado será la mitad y pasaremos a tener 4 monstruos
+-A partir de la quinta victoria solo podremos escoger la pistola como arma
+ 
+
+Niveles de dificultad:
+1: Antes de programming for dummies habias programado en notebooks y poco mas. Deberás limpiar todo lo que puedas el main y la clase "combat_management" dividiendo el código en funciones, además de parametrizar aquellos valores que consideres necesarios para que cuando queramos cambiar "algo" haya que hacerlo solo un sitio fácil de encontrar, intenta identificar tambien que clases/objetos echas en falta
+2: Tienes un nivel básico, sabes programar medianamente bien y utilizar objetos aunque seguramente te cuesta manejarte con ellos. Cuando todo lo anterior este listo intenta establecer que relaciones tendrán los objetos entre ellos (aquí ya vas a tener que dibujar) y programarlo hasta donde puedas.
+3: Tienes mucha soltura dividiendo el código en funciones, modularizando el código y con programación orientada objetos. En este punto queremos un diagrama de clases bien hecho e implementado, y es momento de ir comprobando que pasa si añadimos nuevas funcionalidades (nuevas armas, municiones, monstruos acciones de mosntruos y soldados...) y que supone en nuestro código
+4: Tienes conocimientos sólidos de diseño, te mueves en OOP como pez en el agua y sabes manejar (al menos a un nivel básico) la herencia y el polimorfismo, aquí ha llegado el momento de eliminar la mayoria de los "if" de la clase "combat_management" de forma 100% limpia, para ello deberás usar herencia y mover funcionalidad entre clases. En este punto meter cualquier ampliación deberia ser rápido, sencillo y limpio (mas o menos).
+5: Eres todo un experto. Hay un patron de diseño que se puede utilizar para que cualquier ampliación mencionada antes (y muchisimas mas) encaje de forma perfecta, todos los "if" salvo los del panel de control del main son histori

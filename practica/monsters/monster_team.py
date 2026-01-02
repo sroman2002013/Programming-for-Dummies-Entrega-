@@ -13,5 +13,7 @@ class MonsterTeam:
 
     def all_dead(self) -> bool:
         self.remove_dead()
-        return len(self.monsters) == 0      
+        return len(self.monsters) == 0
+    
+    
     
