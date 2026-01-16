@@ -5,45 +5,61 @@ from monsters.monster_factory import MonsterFactory
 class Game:
     def __init__(self):
         self.wins = 0
-        self.difficulty = 1
+        
+
+    def get_difficulty_settings(self):
+        name = "Fácil"
+        hp = 1000
+        m_count = 3
+        force_gun = False
+
+        if self.wins >= 5: 
+            name = "Difícil"
+            hp = hp/2
+            m_count = 4
+            force_gun = True
+        elif self.wins >= 3: 
+            name = "Media"
+            hp = hp/2
+            m_count = 4
+        
+        return name, hp, m_count, force_gun
     
     def run(self):
-        print("=== Welcome to Monster Slayer ===")
+        print("=== WELCOME TO MONSTER SLAYER ===")
         
-        soldier = SoldierFactory.create_soldier()
+        player_name = input("What is your name, soldier?: ")
         
-        while soldier.is_alive():
-            print(f"\n=== Combat #{self.wins + 1} (Difficulty: {self.difficulty}) ===")
+        playing = True
+        while playing:
+            diff_name, hp, m_count, force_gun = self.get_difficulty_settings()
             
-            if self.wins >= 2:  
-                soldier.hp = soldier.hp // 2
-                print(f"Hard mode! Soldier HP halved: {soldier.hp}")
-                monster_count = 4
-            else:
-                monster_count = 3
+            print(f"\n" + "="*45)
+            print(f"COMBAT #{self.wins + 1} | DIFFICULTY: {diff_name}")
+            print(f"Soldier: {player_name} | Starting HP: {hp}")
+            print("="*45)
+
             
-            if self.wins >= 4:  
-                print("Extreme mode! Only Gun allowed.")
-                # soldier.weapon = Gun()
+            soldier = SoldierFactory.create_soldier(player_name, hp, force_gun)
             
-            monster_team = MonsterFactory.create_team(monster_count)
+            monster_team = MonsterFactory.create_team(m_count)
             
             combat = CombatManager(soldier, monster_team)
             winner = combat.run_combat()
             
             if winner == "soldier":
                 self.wins += 1
-                self.difficulty = (self.wins // 3) + 1
-                print(f"Victory! Total wins: {self.wins}")
-                
-                if soldier.is_alive():
-                    continue_game = input("Continue to next combat? (y/n): ").lower()
-                    if continue_game != 'y':
-                        break
+                print(f"\nVICTORY! You have won {self.wins} combat(s).")
+                if input("Prepare for the next challenge? (y/n): ").lower() != 'y':
+                    playing = False
             else:
-                print("Game Over!")
-                break
-        
-        print(f"\n=== Final Score ===")
-        print(f"Total victories: {self.wins}")
-        print(f"Maximum difficulty reached: {self.difficulty}")
+                print(f"\nDEFEAT... You died in round {self.wins + 1}.")
+                playing = False
+
+        print(f"\n=== FINAL SCORE ===")
+        print(f"Soldier: {player_name}")
+        print(f"Total Victories: {self.wins}")
+
+if __name__ == "__main__":
+    game = Game()
+    game.run()

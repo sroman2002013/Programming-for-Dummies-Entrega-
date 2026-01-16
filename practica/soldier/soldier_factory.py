@@ -1,5 +1,5 @@
-from soldier import Soldier
-from soldier_states.soldier_state import StandardState
+from soldier.soldier import Soldier
+from soldier.soldier_states.normal_state import NormalState
 from weapons.gun import Gun
 from weapons.shotgun import Shotgun
 from weapons.machinegun import Machinegun
@@ -14,15 +14,15 @@ class SoldierFactory:
     }
 
     @staticmethod
-    def create_soldier(name="Accenture enjoyer") -> Soldier:        
-        print("Choose weapon {1: Gun, 2: Shot Gun, 3: Machine Gun}")
-        weapon_choice = input("Select weapon: ")
-        
-        while weapon_choice not in SoldierFactory.WEAPON_MAP:
-            print("Invalid weapon selection.")
-            weapon_choice = input("Select weapon {1: Gun, 2: Shot Gun, 3: Machine Gun}: ")
+    def create_soldier(name, hp, force_gun=False):
+        if force_gun:
+            print(f"HARD MODE ACTIVE: {name}, you are restricted to using the 'Gun' only!")
+            weapon = Gun()
+        else:
             
-        weapon_class = SoldierFactory.WEAPON_MAP[weapon_choice]
-        weapon_instance = weapon_class()
+            print("{1: Gun, 2: Shot Gun, 3: Machine Gun}")
+            choice = input("Selection: ")
+            
+            weapon = SoldierFactory.WEAPON_MAP.get(choice, Gun)()
         
-        return Soldier(name=name, hp=1000, weapon=weapon_instance, state=StandardState())
+        return Soldier(name=name, weapon=weapon, hp=hp)

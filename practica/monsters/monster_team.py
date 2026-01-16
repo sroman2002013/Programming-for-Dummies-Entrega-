@@ -1,4 +1,4 @@
-from monster import Monster
+from monsters.monster import Monster
 
 class MonsterTeam:
 

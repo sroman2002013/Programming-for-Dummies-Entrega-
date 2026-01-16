@@ -1,4 +1,4 @@
-from soldier_action import SoldierAction
+from soldier.soldier_actions.soldier_action import SoldierAction
 import random
 
 class CriticalShotAction(SoldierAction):

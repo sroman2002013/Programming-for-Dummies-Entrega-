@@ -1,4 +1,4 @@
-from soldier_states.normal_state import NormalState 
+from soldier.soldier_states.normal_state import NormalState 
 
 class Soldier:
     def __init__(self, name, weapon, hp=1000, state=NormalState()):
@@ -12,14 +12,13 @@ class Soldier:
 
     def take_damage(self, damage: int):
         self.hp -= damage
-        # TODO: print???
 
 
     def perform_action(self, action):
         self.state.on_turn_start(self)
 
         if not self.state.can_act():
-            # TODO: print???
+            
             return
         
         action.execute(self)

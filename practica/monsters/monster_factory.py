@@ -1,4 +1,4 @@
-from monster_team import MonsterTeam
+from monsters.monster_team import MonsterTeam
 from monsters.troll import Troll
 from monsters.daemon import Daemon
 from monsters.ghost import Ghost

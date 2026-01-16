@@ -1,4 +1,4 @@
-from monster_action import MonsterAction
+from monsters.monster_actions.monster_action import MonsterAction
 
 class SpecialAttackAction(MonsterAction):
     def __init__(self, monster):
@@ -6,3 +6,4 @@ class SpecialAttackAction(MonsterAction):
     
     def execute(self, soldier):
         self.monster.special_attack(soldier)
+        

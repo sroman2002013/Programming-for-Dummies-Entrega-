@@ -1,4 +1,4 @@
-from monster import Monster
+from monsters.monster import Monster
 from soldier.soldier_states.troll_state import TrollState
 
 class Troll(Monster):
@@ -11,6 +11,8 @@ class Troll(Monster):
             damage *= 2
             print("DOUBLE TROLL ATTACK")
         soldier.take_damage(damage)
+        print(f"The troll takes {damage} HP from the soldier!")
     
     def special_attack(self, soldier):
         soldier.set_state(TrollState())
+        print("The troll has enraged the soldier!")
